@@ -17,7 +17,7 @@ export const Cards = (props) => {
                         <div>Hair Color:{props.pelo}</div>
                         <div>Eye-Color:{props.ojos}</div>
                     </div>
-                    <div id="botones" className="w-100">
+                    <div id="botones" className="w-50 m-3">
                     <Link to ="" className="btn btn-outline-primary ">Learn More</Link>
                     <Link to ="" className="btn btn-outline-warning "><i className="fa fa-heart text-warning" /></Link>
                     </div>
