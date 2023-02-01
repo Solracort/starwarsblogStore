@@ -2,3 +2,8 @@
     display: flex;
     justify-content: space-between;
 }
+
+.tarjeta {
+    border: 0.5px solid blue;
+    border-radius: 50px;
+}
