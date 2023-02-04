@@ -1,24 +1,15 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useContext} from "react";
 import { Link, useParams } from "react-router-dom";
+import { Context } from "../store/appContext";
+
 
 export const Biovehicle = () => {
 	// const { store, actions } = useContext(Context);
     const params = useParams([])
-    const [caracteristica,setCaracteristica]= useState({})
-    const [description,setDescription] = useState({})
-    function getAPIcaracteristicas(){
-        fetch("https://www.swapi.tech/api/vehicle/"+params.theid)
-        .then(res => res.json())
-        //.then(data => console.log(data))
-		.then(data =>{ 
-			//console.log(data.result);
-			setCaracteristica(data.result.properties)
-            setDescription(data.result)
-		})
-        .catch(err => console.error(err))
-    }
+    const { store, actions } = useContext(Context);
+    
     useEffect(()=>{
-            getAPIcaracteristicas();
+            actions.getAPIcaracteristicasVehicles(params.theid);
     },[])
 	return (
         
@@ -29,16 +20,16 @@ export const Biovehicle = () => {
                 <img src={"https://starwars-visualguide.com/assets/img/vehicles/"+ params.theid +".jpg"} />
             </div>
             <div className="m-3">
-                <h1>{caracteristica.name}</h1>
+                <h1>{store.caracteristicaVehiculo.name}</h1>
                 <h3>Description</h3>
-                <h3>{description.description}</h3>
+                <h3>{store.caracteristicaVehiculo.description}</h3>
                 <hr/>
                 <p>
-                Model:{caracteristica.model +" "} Cargo Capacity:{caracteristica.cargo_capacity + " "} Passengers:{caracteristica.passengers}
+                Model:{store.caracteristicaVehiculo.model +" "} Cargo Capacity:{store.caracteristicaVehiculo.cargo_capacity + " "} Passengers:{store.caracteristicaVehiculo.passengers}
                 </p>
                 <Link to="/">
-                <button className="btn btn-primary">Back home</button>
-			</Link>
+                    <button className="btn btn-primary">Back home</button>
+			    </Link>
             </div>
             
             

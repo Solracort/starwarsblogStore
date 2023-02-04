@@ -5,7 +5,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planetas:[],
 			vehiculos:[],
 			params : [],
-    		caracteristica:[],
+    		caracteristicaPersonaje:{},
+			caracteristicaVehiculo:[],
+    		caracteristicaPlaneta:[],
     		description:[],
 		},
 		actions: {
@@ -18,7 +20,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					//.then(data => console.log(data))
 					.then(data =>{ 
 						//console.log(data);
-						setPersonaje(data.results)
+						setStore({
+							personajes:data.results
+						})
 					})
 					.catch(err => console.error(err))
 				},
@@ -27,41 +31,55 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(data => {
 						console.log(data)
-						setPlanet(data.results)})
+						setStore({
+							planetas: data.results
+						})
+					})	
 					.catch(err => console.error(err))
 				},
 				getVehicle:()=>{
 					fetch("https://www.swapi.tech/api/vehicles/")
 					.then(res => res.json())
 					.then(data => {
-						console.log(data)
-						setVehicle(data.results)})
+						//console.log(data)
+						setStore({
+							vehiculos: data.results})
+						})
 					.catch(err => console.error(err))
 				},
-				getAPIcaracteristicas:()=>{
-					fetch("https://www.swapi.tech/api/vehicles/"+props.id)
+				getAPIcaracteristicasVehicles:(id)=>{
+					fetch("https://www.swapi.tech/api/vehicles/"+id)
 					.then(res => res.json())
 					.then(data =>{ 
 						//console.log("esto es vehicles"+ data);
-						setCaracteristica(data.result.properties)
+						setStore({
+							caracteristicaVehiculo:	data.result.properties
+						})
 					})
 					.catch(err => console.error(err))
 					},
-				getAPIcaracteristicas:()=>{
-						fetch("https://www.swapi.tech/api/people/"+props.id)
+				getAPIcaracteristicasPeople:(id)=>{
+					//console.log("Este es el del flux"+id)
+						fetch("https://www.swapi.tech/api/people/"+id)
 						.then(res => res.json())
 						.then(data =>{ 
 							//console.log("esto es"+ data);
-							setCaracteristica(data.result.properties)
+							setStore({
+								caracteristicaPersonaje:data.result.properties
+
+							})
 						})
 						.catch(err => console.error(err))
 				},
-				getAPIcaracteristicas:()=>{
-					fetch("https://www.swapi.tech/api/planets/"+props.id)
+				getAPIcaracteristicasPlanets:(id)=>{
+					fetch("https://www.swapi.tech/api/planets/"+id)
 					.then(res => res.json())
 					.then(data =>{ 
-						//console.log("Planeta"+ data.result);
-						setCaracteristica(data.result)
+						console.log("Este Planeta"+ data.result);
+						setStore({
+							caracteristicaPlaneta:data.result
+							
+						})
 					})
 					.catch(err => console.error(err))
 					},
