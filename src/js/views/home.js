@@ -7,12 +7,7 @@ import {CardVehicle} from "../component/cardVehicle.jsx"
 
 export const Home = () => {
 	const {store}= useContext(Context)
-	//console.log(useContext(Context))
-	console.log(store.personajes)
-    
-    
 	
-
 return(
 	<>
 		<h2 className="text-center">Personajes</h2>

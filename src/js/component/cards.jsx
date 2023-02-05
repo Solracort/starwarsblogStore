@@ -1,26 +1,15 @@
 import { Link } from "react-router-dom";
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useContext} from "react"
+import {Context} from "../store/appContext"
 import "../../styles/home.css";
 
 	
 export const Cards = (props) => {
-    const [caracteristica,setCaracteristica]=useState({})
-
-    function getAPIcaracteristicas(){
-			fetch("https://www.swapi.tech/api/people/"+props.id)
-			.then(res => res.json())
-			.then(data =>{ 
-				//console.log("esto es"+ data);
-				setCaracteristica(data.result.properties)
-			})
-			.catch(err => console.error(err))
-			}
-    
+    const { store, actions } = useContext(Context);
     useEffect(()=>{
-		getAPIcaracteristicas();
+        console.log("Le paso este valor como id:"+props.id)
+        actions.getAPIcaracteristicasPeople(props.id)
     },[])
-	
-    
 	return (
         // https://starwars-visualguide.com/assets/img/characters/1.jpg pagina para traer las imagenes
             <div className="tarjeta col mt-2 me-1" >
@@ -28,13 +17,17 @@ export const Cards = (props) => {
                 <div className="card-body">
                     <h5 className="card-title">{props.nombre}</h5>
                     <div className="card-text text-start m-3 d-block">
-                        <div>Gender: {caracteristica.gender}</div>
-                        <div>Hair Color: {caracteristica.hair_color}</div>
-                        <div>Eye-Color: {caracteristica.eye_color}</div>
+                    {/* Height:{store.caracteristicaPersonaje.height +" "} Gender:{store.caracteristicaPersonaje.gender + " "} Hair color:{store.caracteristicaPersonaje.hair_color} */}
+                    
+                        <div>Gender: {store.caracteristicaPersonaje.gender}</div>
+                        <div>Hair Color: {store.caracteristicaPersonaje.hair_color}</div>
+                        <div>Eye-Color: {store.caracteristicaPersonaje.eye_color}</div>
                     </div>
                     <div id="botones" className="w-100 m-3">
                     <Link to ={"/bio/"+props.id} className="btn btn-outline-primary ">Learn More</Link>
-                    <Link to ="" className="btn btn-outline-warning "><i className="fa fa-heart text-warning" /></Link>
+                    <Link 
+                    // onClick={actions.addFav(props.nombre)} 
+                    to ="" className="btn btn-outline-warning "><i className="fa fa-heart text-warning" /></Link>
                     </div>
                 </div>
             </div>

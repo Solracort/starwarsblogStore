@@ -2,26 +2,9 @@ import { Link } from "react-router-dom";
 import React, {useState, useEffect} from "react"
 import "../../styles/home.css";
 
-	
 export const CardVehicle = (props) => {
     const [caracteristica,setCaracteristica]=useState({})
-
-    function getAPIcaracteristicas(){
-			fetch("https://www.swapi.tech/api/vehicles/"+props.id)
-			.then(res => res.json())
-			.then(data =>{ 
-				//console.log("esto es vehicles"+ data);
-				setCaracteristica(data.result.properties)
-			})
-			.catch(err => console.error(err))
-			}
-    
-    useEffect(()=>{
-		getAPIcaracteristicas();
-    },[])
-	
-    
-	return (
+    return (
         // https://starwars-visualguide.com/assets/img/characters/1.jpg pagina para traer las imagenes
             <div className="tarjeta col mt-2 me-1" >
                 <img src={"https://starwars-visualguide.com/assets/img/vehicles/"+ props.id +".jpg"} className="card-img-top w-50 m-2" alt="..." />

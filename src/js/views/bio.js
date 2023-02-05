@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
-
 import { Context } from "../store/appContext";
-
 import "../../styles/demo.css";
 
 export const Bio = () => {
@@ -13,9 +11,7 @@ export const Bio = () => {
             actions.getAPIcaracteristicasPeople(params.theid)
 
     },[])
-
-console.log(store.caracteristicaPersonaje)
-
+//console.log(store.caracteristicaPersonaje)
 	return (
         
         
@@ -26,11 +22,11 @@ console.log(store.caracteristicaPersonaje)
             </div>
             <div className="m-3">
                 <h1>{store.caracteristicaPersonaje.name}</h1> 
-                <h3>Description</h3>
+                <h3>Description </h3>
                 <h3>{store.caracteristicaPersonaje.description}</h3>
                 <hr/>
                 <p>
-                Height:{store.caracteristicaPersonaje.height +" "} Gender:{store.caracteristicaPersonaje.gender + " "} Hair color:{store.caracteristicaPersonaje.hair_color}
+                Height: {store.caracteristicaPersonaje.height +" "} Gender: {store.caracteristicaPersonaje.gender + " "} Hair color: {store.caracteristicaPersonaje.hair_color}
                 </p> 
                 <Link to="/">
                 <button className="btn btn-primary">Back home</button>

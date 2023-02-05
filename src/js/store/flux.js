@@ -4,20 +4,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			personajes: [],
 			planetas:[],
 			vehiculos:[],
-			params : [],
-    		caracteristicaPersonaje:{},
+			caracteristicaPersonaje:{},
 			caracteristicaVehiculo:[],
-    		caracteristicaPlaneta:[],
-    		description:[],
+    		caracteristicaPlaneta:{},
+    		listaFavs:{},
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			
-
 				getAPIName: ()=>{
 					fetch("https://www.swapi.tech/api/people/")
 					.then(res => res.json())
-					//.then(data => console.log(data))
 					.then(data =>{ 
 						//console.log(data);
 						setStore({
@@ -30,8 +26,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch("https://www.swapi.tech/api/planets/")
 					.then(res => res.json())
 					.then(data => {
-						console.log(data)
-						setStore({
+							setStore({
 							planetas: data.results
 						})
 					})	
@@ -59,14 +54,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error(err))
 					},
 				getAPIcaracteristicasPeople:(id)=>{
-					//console.log("Este es el del flux"+id)
+					
 						fetch("https://www.swapi.tech/api/people/"+id)
 						.then(res => res.json())
 						.then(data =>{ 
-							//console.log("esto es"+ data);
-							setStore({
+								setStore({
 								caracteristicaPersonaje:data.result.properties
-
 							})
 						})
 						.catch(err => console.error(err))
@@ -78,14 +71,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Este Planeta"+ data.result);
 						setStore({
 							caracteristicaPlaneta:data.result
-							
 						})
 					})
 					.catch(err => console.error(err))
-					},
+				},
+				// addFav: (valorFav)=>{
+				// 	setStore({
+				// 		listaFavs: {...listaFavs,valorFav}
+				// 	})
+				// }	
 			}
 		}
 	}
-
-
 export default getState;

@@ -24,9 +24,11 @@ export const Biovehicle = () => {
                 <h3>Description</h3>
                 <h3>{store.caracteristicaVehiculo.description}</h3>
                 <hr/>
-                <p>
-                Model:{store.caracteristicaVehiculo.model +" "} Cargo Capacity:{store.caracteristicaVehiculo.cargo_capacity + " "} Passengers:{store.caracteristicaVehiculo.passengers}
-                </p>
+                <p>Model: {store.caracteristicaVehiculo.model +" "} </p>
+                <p>Cargo Capacity: {store.caracteristicaVehiculo.cargo_capacity + " "}</p>
+                <p>Passengers: {store.caracteristicaVehiculo.passengers}</p>
+                 
+                
                 <Link to="/">
                     <button className="btn btn-primary">Back home</button>
 			    </Link>
