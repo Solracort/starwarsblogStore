@@ -1,11 +1,11 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			personajes: [],
-			planetas:[],
-			vehiculos:[],
+			personajes: {},
+			planetas:{},
+			vehiculos:{},
 			caracteristicaPersonaje:{},
-			caracteristicaVehiculo:[],
+			caracteristicaVehiculo:{},
     		caracteristicaPlaneta:{},
     		listaFavs:{},
 		},
