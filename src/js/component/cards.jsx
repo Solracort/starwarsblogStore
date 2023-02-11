@@ -26,7 +26,7 @@ export const Cards = (props) => {
                     <div id="botones" className="w-100 m-3">
                     <Link to ={"/bio/"+props.id} className="btn btn-outline-primary ">Learn More</Link>
                     <Link 
-                    // onClick={actions.addFav(props.nombre)} 
+                    onClick={()=>actions.addFav(props.nombre, props.id)} 
                     to ="" className="btn btn-outline-warning "><i className="fa fa-heart text-warning" /></Link>
                     </div>
                 </div>

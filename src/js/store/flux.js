@@ -1,13 +1,14 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			personajes: {},
-			planetas:{},
-			vehiculos:{},
+			listaFavs:[],
+			personajes: [],
+			planetas:[],
+			vehiculos:[],
 			caracteristicaPersonaje:{},
-			caracteristicaVehiculo:{},
-    		caracteristicaPlaneta:{},
-    		listaFavs:{},
+			caracteristicaVehiculo:[],
+    		caracteristicaPlaneta:[],
+    		
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -75,11 +76,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(err => console.error(err))
 				},
-				// addFav: (valorFav)=>{
-				// 	setStore({
-				// 		listaFavs: {...listaFavs,valorFav}
-				// 	})
-				// }	
+				addFav: (valorFav, indexfav)=>{
+					setStore({
+						listaFavs: [...getStore().listaFavs, valorFav]
+						})
+						console.log(getStore().listaFavs)
+				}	
 			}
 		}
 	}
