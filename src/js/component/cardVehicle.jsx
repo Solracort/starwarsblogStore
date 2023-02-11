@@ -10,14 +10,11 @@ export const CardVehicle = (props) => {
                 <img src={"https://starwars-visualguide.com/assets/img/vehicles/"+ props.id +".jpg"} className="card-img-top w-50 m-2" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{props.nombre}</h5>
-                    <div className="card-text text-start m-3 d-block">
-                        <div>Model: {caracteristica.model}</div>
-                        <div>Cargo Capacity: {caracteristica.cargo_capacity}</div>
-                        <div>Passengers: {caracteristica.passengers}</div>
-                    </div>
                     <div id="botones" className="w-100 m-3">
                     <Link to ={"/biovehicle/"+props.id} className="btn btn-outline-primary ">Learn More</Link>
-                    <Link to ="" className="btn btn-outline-warning "><i className="fa fa-heart text-warning" /></Link>
+                    <Link onClick={()=>actions.addFav(props.nombre, props.id)} 
+                    to ="" className="btn btn-outline-warning "><i className="fa fa-heart text-warning" />
+                    </Link>
                     </div>
                 </div>
             </div>

@@ -11,10 +11,6 @@ export const CardPlanet = (props) => {
                 <img src={"https://starwars-visualguide.com/assets/img/planets/"+ props.id +".jpg"} className="card-img-top w-50 m-2" alt="PLANET PIC" />
                 <div className="card-body">
                     <h5 className="card-title">{props.nombre}</h5>
-                    <div className="card-text text-start m-3 d-block">
-                        <div>Population: {store.caracteristicaPlaneta.population}</div>
-                        <div>Terrain: {store.caracteristicaPlaneta.terrain}</div>
-                    </div>
                     <div id="botones" className="w-100 m-3">
                     <Link to ={"/bioplanet/"+props.id} className="btn btn-outline-primary ">Learn More</Link>
                     <Link to ="" className="btn btn-outline-warning "><i className="fa fa-heart text-warning" /></Link>

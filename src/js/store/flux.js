@@ -81,7 +81,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 						listaFavs: [...getStore().listaFavs, valorFav]
 						})
 						console.log(getStore().listaFavs)
-				}	
+				},	
+				deleteFav: (index)=> {
+					
+					let borrar = (getStore().listaFavs[index])
+					setStore({
+						listaFavs: getStore().listaFavs.filter((item) => item!=borrar)
+				})
+				}
 			}
 		}
 	}
